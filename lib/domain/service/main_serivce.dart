@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:injectable/injectable.dart';
+import 'package:test_/domain/model/forecast/forecast_model.dart';
 
 import '../../data/api/main_api.dart';
 
@@ -9,10 +10,10 @@ class MainService {
   final MainApi _mainApi;
   MainService(this._mainApi);
 
-  fetchSavedBooks() async {
-    final response = await _mainApi.getCategory();
+  fetchWeather(double lat,double long) async {
+    final response = await _mainApi.fetchWeather(lat,long);
     var data = jsonDecode(response.body);
-    return data;
+    return ForecastModel.fromJson(data);
   }
 
   // Future getCustomers(int page, int id) async {

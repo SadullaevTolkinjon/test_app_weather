@@ -1,4 +1,3 @@
-
 import 'package:http/http.dart';
 import 'package:injectable/injectable.dart';
 import 'package:test_/data/api/api.dart';
@@ -7,8 +6,15 @@ import 'package:test_/data/api/api.dart';
 class MainApi {
   final Api _api;
   MainApi(this._api);
-  Future<Response> getCategory() async {
-    var data = await _api.get(path: 'category/top');
+  Future<Response> fetchWeather(double lat,double long) async {
+    Map<String, Object> params = {
+      "latitude":lat,
+      "longitude": long,
+      "current":"temperature_2m",
+      "imezone":"Europe/Moscow",
+      "orecast_days":"1"
+    };
+    var data = await _api.get(path: 'forecast', params: params);
     return data;
   }
 

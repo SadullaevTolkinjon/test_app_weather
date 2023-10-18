@@ -11,8 +11,8 @@ class Api {
 
   // Api(this._token);
 
-  final _host = "api.takhfid.uz";
-  final _root = "";
+  final _host = "api.open-meteo.com";
+  final _root = "v1";
 
   final _timeout = const Duration(seconds: 15);
 
@@ -24,7 +24,7 @@ class Api {
     required String path,
     Map<String, Object>? params,
   }) async {
-    final uri = Uri.http(_host, "$_root/$path",
+    final uri = Uri.https(_host, "$_root/$path",
         params?.map((key, value) => MapEntry(key, value.toString())));
     final headers = await _headers;
     final result =

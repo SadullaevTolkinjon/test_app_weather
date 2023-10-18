@@ -3,25 +3,24 @@ import 'dart:convert';
 import 'package:injectable/injectable.dart';
 import 'package:test_/data/api/main_api.dart';
 
-
 @Injectable()
 class MainRepository {
   final MainApi _mainApi;
 
   MainRepository(this._mainApi);
-  getCategories() async {
-    final response = await _mainApi.getCategory();
-    var data = jsonDecode(response.body);
-    Iterable list = data["result"];
-    return list;
-  }
-  validator(String val){
-    if(val.isEmpty){
+  // getCategories() async {
+  //   final response = await _mainApi.fetchWeather();
+  //   var data = jsonDecode(response.body);
+
+  //   return data;
+  // }
+
+  validator(String val) {
+    if (val.isEmpty) {
       return "Shouldn't be empty";
     }
   }
 
- 
   // Future<List<Stat>> getStats(int page, int size) async {
   //   final response = await _mainApi.getStats(page, size);
   //   Iterable list = jsonDecode(response.body);
