@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class FavoritePapge extends StatelessWidget {
-  const FavoritePapge({super.key});
+class WeatherPage extends StatelessWidget {
+  const WeatherPage({super.key});
 
   @override
   Widget build(BuildContext context) {
