@@ -17,7 +17,7 @@ builtBottomBar() {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite), label: "Favorite"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile")
+          BottomNavigationBarItem(icon: Icon(Icons.snowing), label: "Weather")
         ],
       );
     },

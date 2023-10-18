@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:test_/constants/navigator/navigator_const.dart';
 import 'package:test_/di/injection.dart';
 import 'package:test_/presentation/home/cubit/home_cubit.dart';
 import 'package:test_/utils/router/router.dart';
 import 'package:test_/utils/theme/main_theme.dart';
-import 'package:test_/constants/navigator/navigator_const.dart';
 
 void main() async {
- await init();
+  init();
   runApp(
     MultiBlocProvider(
       providers: [

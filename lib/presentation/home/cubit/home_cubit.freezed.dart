@@ -17,14 +17,17 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HomeBuildableState {
   bool get loading => throw _privateConstructorUsedError;
-  bool get isModal_hud => throw _privateConstructorUsedError;
   bool get success => throw _privateConstructorUsedError;
   bool get failed => throw _privateConstructorUsedError;
   dynamic get error => throw _privateConstructorUsedError;
   bool get obsecure => throw _privateConstructorUsedError;
   int get currentIndex => throw _privateConstructorUsedError;
-  List<dynamic> get data => throw _privateConstructorUsedError;
   File? get imagePath => throw _privateConstructorUsedError;
+  bool get checkboxVal => throw _privateConstructorUsedError;
+  bool get is_image_failed => throw _privateConstructorUsedError;
+  bool get is_date_failed => throw _privateConstructorUsedError;
+  bool get is_privacy_failed => throw _privateConstructorUsedError;
+  DateTime? get time => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeBuildableStateCopyWith<HomeBuildableState> get copyWith =>
@@ -39,14 +42,17 @@ abstract class $HomeBuildableStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool loading,
-      bool isModal_hud,
       bool success,
       bool failed,
       dynamic error,
       bool obsecure,
       int currentIndex,
-      List<dynamic> data,
-      File? imagePath});
+      File? imagePath,
+      bool checkboxVal,
+      bool is_image_failed,
+      bool is_date_failed,
+      bool is_privacy_failed,
+      DateTime? time});
 }
 
 /// @nodoc
@@ -63,23 +69,22 @@ class _$HomeBuildableStateCopyWithImpl<$Res, $Val extends HomeBuildableState>
   @override
   $Res call({
     Object? loading = null,
-    Object? isModal_hud = null,
     Object? success = null,
     Object? failed = null,
     Object? error = freezed,
     Object? obsecure = null,
     Object? currentIndex = null,
-    Object? data = null,
     Object? imagePath = freezed,
+    Object? checkboxVal = null,
+    Object? is_image_failed = null,
+    Object? is_date_failed = null,
+    Object? is_privacy_failed = null,
+    Object? time = freezed,
   }) {
     return _then(_value.copyWith(
       loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isModal_hud: null == isModal_hud
-          ? _value.isModal_hud
-          : isModal_hud // ignore: cast_nullable_to_non_nullable
               as bool,
       success: null == success
           ? _value.success
@@ -101,14 +106,30 @@ class _$HomeBuildableStateCopyWithImpl<$Res, $Val extends HomeBuildableState>
           ? _value.currentIndex
           : currentIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
       imagePath: freezed == imagePath
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
               as File?,
+      checkboxVal: null == checkboxVal
+          ? _value.checkboxVal
+          : checkboxVal // ignore: cast_nullable_to_non_nullable
+              as bool,
+      is_image_failed: null == is_image_failed
+          ? _value.is_image_failed
+          : is_image_failed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      is_date_failed: null == is_date_failed
+          ? _value.is_date_failed
+          : is_date_failed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      is_privacy_failed: null == is_privacy_failed
+          ? _value.is_privacy_failed
+          : is_privacy_failed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      time: freezed == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -123,14 +144,17 @@ abstract class _$$HomeBuildableStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool loading,
-      bool isModal_hud,
       bool success,
       bool failed,
       dynamic error,
       bool obsecure,
       int currentIndex,
-      List<dynamic> data,
-      File? imagePath});
+      File? imagePath,
+      bool checkboxVal,
+      bool is_image_failed,
+      bool is_date_failed,
+      bool is_privacy_failed,
+      DateTime? time});
 }
 
 /// @nodoc
@@ -145,23 +169,22 @@ class __$$HomeBuildableStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? loading = null,
-    Object? isModal_hud = null,
     Object? success = null,
     Object? failed = null,
     Object? error = freezed,
     Object? obsecure = null,
     Object? currentIndex = null,
-    Object? data = null,
     Object? imagePath = freezed,
+    Object? checkboxVal = null,
+    Object? is_image_failed = null,
+    Object? is_date_failed = null,
+    Object? is_privacy_failed = null,
+    Object? time = freezed,
   }) {
     return _then(_$HomeBuildableStateImpl(
       loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isModal_hud: null == isModal_hud
-          ? _value.isModal_hud
-          : isModal_hud // ignore: cast_nullable_to_non_nullable
               as bool,
       success: null == success
           ? _value.success
@@ -183,14 +206,30 @@ class __$$HomeBuildableStateImplCopyWithImpl<$Res>
           ? _value.currentIndex
           : currentIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      data: null == data
-          ? _value._data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
       imagePath: freezed == imagePath
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
               as File?,
+      checkboxVal: null == checkboxVal
+          ? _value.checkboxVal
+          : checkboxVal // ignore: cast_nullable_to_non_nullable
+              as bool,
+      is_image_failed: null == is_image_failed
+          ? _value.is_image_failed
+          : is_image_failed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      is_date_failed: null == is_date_failed
+          ? _value.is_date_failed
+          : is_date_failed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      is_privacy_failed: null == is_privacy_failed
+          ? _value.is_privacy_failed
+          : is_privacy_failed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      time: freezed == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -200,22 +239,21 @@ class __$$HomeBuildableStateImplCopyWithImpl<$Res>
 class _$HomeBuildableStateImpl implements _HomeBuildableState {
   const _$HomeBuildableStateImpl(
       {this.loading = false,
-      this.isModal_hud = false,
       this.success = false,
       this.failed = false,
       this.error,
       this.obsecure = true,
       this.currentIndex = 0,
-      final List<dynamic> data = const [],
-      this.imagePath})
-      : _data = data;
+      this.imagePath,
+      this.checkboxVal = false,
+      this.is_image_failed = false,
+      this.is_date_failed = false,
+      this.is_privacy_failed = false,
+      this.time});
 
   @override
   @JsonKey()
   final bool loading;
-  @override
-  @JsonKey()
-  final bool isModal_hud;
   @override
   @JsonKey()
   final bool success;
@@ -230,21 +268,26 @@ class _$HomeBuildableStateImpl implements _HomeBuildableState {
   @override
   @JsonKey()
   final int currentIndex;
-  final List<dynamic> _data;
-  @override
-  @JsonKey()
-  List<dynamic> get data {
-    if (_data is EqualUnmodifiableListView) return _data;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_data);
-  }
-
   @override
   final File? imagePath;
+  @override
+  @JsonKey()
+  final bool checkboxVal;
+  @override
+  @JsonKey()
+  final bool is_image_failed;
+  @override
+  @JsonKey()
+  final bool is_date_failed;
+  @override
+  @JsonKey()
+  final bool is_privacy_failed;
+  @override
+  final DateTime? time;
 
   @override
   String toString() {
-    return 'HomeBuildableState(loading: $loading, isModal_hud: $isModal_hud, success: $success, failed: $failed, error: $error, obsecure: $obsecure, currentIndex: $currentIndex, data: $data, imagePath: $imagePath)';
+    return 'HomeBuildableState(loading: $loading, success: $success, failed: $failed, error: $error, obsecure: $obsecure, currentIndex: $currentIndex, imagePath: $imagePath, checkboxVal: $checkboxVal, is_image_failed: $is_image_failed, is_date_failed: $is_date_failed, is_privacy_failed: $is_privacy_failed, time: $time)';
   }
 
   @override
@@ -253,8 +296,6 @@ class _$HomeBuildableStateImpl implements _HomeBuildableState {
         (other.runtimeType == runtimeType &&
             other is _$HomeBuildableStateImpl &&
             (identical(other.loading, loading) || other.loading == loading) &&
-            (identical(other.isModal_hud, isModal_hud) ||
-                other.isModal_hud == isModal_hud) &&
             (identical(other.success, success) || other.success == success) &&
             (identical(other.failed, failed) || other.failed == failed) &&
             const DeepCollectionEquality().equals(other.error, error) &&
@@ -262,23 +303,34 @@ class _$HomeBuildableStateImpl implements _HomeBuildableState {
                 other.obsecure == obsecure) &&
             (identical(other.currentIndex, currentIndex) ||
                 other.currentIndex == currentIndex) &&
-            const DeepCollectionEquality().equals(other._data, _data) &&
             (identical(other.imagePath, imagePath) ||
-                other.imagePath == imagePath));
+                other.imagePath == imagePath) &&
+            (identical(other.checkboxVal, checkboxVal) ||
+                other.checkboxVal == checkboxVal) &&
+            (identical(other.is_image_failed, is_image_failed) ||
+                other.is_image_failed == is_image_failed) &&
+            (identical(other.is_date_failed, is_date_failed) ||
+                other.is_date_failed == is_date_failed) &&
+            (identical(other.is_privacy_failed, is_privacy_failed) ||
+                other.is_privacy_failed == is_privacy_failed) &&
+            (identical(other.time, time) || other.time == time));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       loading,
-      isModal_hud,
       success,
       failed,
       const DeepCollectionEquality().hash(error),
       obsecure,
       currentIndex,
-      const DeepCollectionEquality().hash(_data),
-      imagePath);
+      imagePath,
+      checkboxVal,
+      is_image_failed,
+      is_date_failed,
+      is_privacy_failed,
+      time);
 
   @JsonKey(ignore: true)
   @override
@@ -291,19 +343,20 @@ class _$HomeBuildableStateImpl implements _HomeBuildableState {
 abstract class _HomeBuildableState implements HomeBuildableState {
   const factory _HomeBuildableState(
       {final bool loading,
-      final bool isModal_hud,
       final bool success,
       final bool failed,
       final dynamic error,
       final bool obsecure,
       final int currentIndex,
-      final List<dynamic> data,
-      final File? imagePath}) = _$HomeBuildableStateImpl;
+      final File? imagePath,
+      final bool checkboxVal,
+      final bool is_image_failed,
+      final bool is_date_failed,
+      final bool is_privacy_failed,
+      final DateTime? time}) = _$HomeBuildableStateImpl;
 
   @override
   bool get loading;
-  @override
-  bool get isModal_hud;
   @override
   bool get success;
   @override
@@ -315,9 +368,17 @@ abstract class _HomeBuildableState implements HomeBuildableState {
   @override
   int get currentIndex;
   @override
-  List<dynamic> get data;
-  @override
   File? get imagePath;
+  @override
+  bool get checkboxVal;
+  @override
+  bool get is_image_failed;
+  @override
+  bool get is_date_failed;
+  @override
+  bool get is_privacy_failed;
+  @override
+  DateTime? get time;
   @override
   @JsonKey(ignore: true)
   _$$HomeBuildableStateImplCopyWith<_$HomeBuildableStateImpl> get copyWith =>

@@ -15,6 +15,11 @@ class MainRepository {
     Iterable list = data["result"];
     return list;
   }
+  validator(String val){
+    if(val.isEmpty){
+      return "Shouldn't be empty";
+    }
+  }
 
  
   // Future<List<Stat>> getStats(int page, int size) async {

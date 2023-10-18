@@ -22,14 +22,32 @@ class HomeCubit extends BuildableCubit<HomeState, HomeBuildableState> {
   changeObsecure(bool val) {
     build((buildable) => buildable.copyWith(obsecure: val));
   }
-  selectImage()async{
+
+  selectImage() async {
     try {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image == null) return;
       final imageTemporary = File(image.path);
-     build((buildable) => buildable.copyWith(imagePath: imageTemporary));
+      build((buildable) => buildable.copyWith(imagePath: imageTemporary));
     } on PlatformException catch (e) {
       print("failed image to pick: $e");
     }
   }
+
+  selectUserAgreement(bool val) {
+    build((buildable) => buildable.copyWith(checkboxVal: val));
+  }
+
+ 
+  initCalendar(DateTime time) {
+    build(
+      (buildable) => buildable.copyWith(
+        time: time,
+      ),
+    );
+  }
+  update(){
+    build((buildable) => buildable);
+  }
+
 }

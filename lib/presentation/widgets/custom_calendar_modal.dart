@@ -34,11 +34,11 @@ class CustomCalendarModal extends StatelessWidget {
               Expanded(
                 flex: 5,
                 child: CustomLinearBtn(
-                  txt: "Bekor qilish",
+                  txt: "Back",
                   width: double.infinity,
                   txtColor: ColorConstants.black,
                   linearColor: [
-                    ColorConstants.grey100,
+                    ColorConstants.grey100.withOpacity(0.5),
                     ColorConstants.grey,
                   ],
                   height: AppSizes.getH(context, 0.046),
@@ -56,7 +56,7 @@ class CustomCalendarModal extends StatelessWidget {
                   ontap: () {
                     savePress();
                   },
-                  txt: "Ko'rsatish",
+                  txt: "Save",
                   width: double.infinity,
                   height: 46.0,
                 ),
