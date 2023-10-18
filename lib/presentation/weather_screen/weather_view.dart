@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_/data/preferences/local_data/local_data.dart';
+import 'package:test_/presentation/weather_screen/components/pop_up_menu_content.dart';
 import 'package:test_/presentation/weather_screen/cubit/weather_cubit.dart';
 import 'package:test_/presentation/widgets/buildable.dart';
 import 'package:test_/presentation/widgets/custom_error_widget.dart';
@@ -49,7 +49,55 @@ class _WeatherViewState extends State<WeatherView> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: buildWidgets(state),
+                children: [
+                  state.loading
+                      ? const Text("Loading.......")
+                      : const SizedBox(),
+                  MyPadding(
+                    hieght: AppSizes.getH(context, 0.022),
+                  ),
+                  Text(
+                    state.selectedCity != null
+                        ? state.selectedCity!.city!
+                        : cities.first.city!,
+                    style: TextStyle(
+                      fontSize: AppSizes.getH(context, 0.02),
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  MyPadding(
+                    hieght: AppSizes.getH(context, 0.022),
+                  ),
+                  state.data != null
+                      ? Text(
+                          "${state.data!.current!.temperature_2m.toString()} ${state.data!.current_units!.temperature_2m.toString()}",
+                          style: TextStyle(
+                            fontSize: AppSizes.getH(context, 0.02),
+                            fontWeight: FontWeight.w600,
+                          ),
+                        )
+                      : const Text("Loading......."),
+                  MyPadding(
+                    hieght: AppSizes.getH(context, 0.04),
+                  ),
+                  PopupMenuButton(
+                    child: const PopupMenuContent(),
+                    itemBuilder: (context) => [
+                      ...List.generate(
+                        cities.length,
+                        (index) => PopupMenuItem(
+                          onTap: () async {
+                            context.read<WeatherCubit>().stopTimer();
+                            await context.read<WeatherCubit>().fetch(
+                                  cities[index],
+                                );
+                          },
+                          child: Text(cities[index].city.toString()),
+                        ),
+                      )
+                    ],
+                  ),
+                ],
               ),
             );
           },
@@ -58,68 +106,9 @@ class _WeatherViewState extends State<WeatherView> {
     );
   }
 
-  buildWidgets(WeatherBuuildable state) {
-    List<Widget> widgets = [];
-    if (state.loading) {
-      widgets.add(
-        const Text("Loading......."),
-      );
-    }
-    if (state.success) {
-      widgets.add(
-        Text(
-          state.selectedCity!.city ?? "",
-          style: TextStyle(
-            fontSize: AppSizes.getH(context, 0.02),
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      );
-      widgets.add(
-        MyPadding(
-          hieght: AppSizes.getH(context, 0.022),
-        ),
-      );
-      widgets.add(
-        Text(
-          "${state.data!.current!.temperature_2m.toString()} ${state.data!.current_units!.temperature_2m.toString()}",
-          style: TextStyle(
-            fontSize: AppSizes.getH(context, 0.02),
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      );
-      widgets.add(MyPadding(
-        hieght: AppSizes.getH(context, 0.04),
-      ));
-      widgets.add(
-        PopupMenuButton(
-          child: const Text(
-            "Select city",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
-          ),
-          itemBuilder: (context) => [
-            ...List.generate(
-              cities.length,
-              (index) => PopupMenuItem(
-                onTap: () {
-                  context.read<WeatherCubit>().fetch(
-                        cities[index],
-                      );
-                },
-                child: Text(cities[index].city.toString()),
-              ),
-            )
-          ],
-        ),
-      );
-    }
-    return widgets;
-  }
-@override
+  @override
   void dispose() {
-  context.read<WeatherCubit>().dispose();
+    context.read<WeatherCubit>().dispose();
     super.dispose();
   }
-
 }

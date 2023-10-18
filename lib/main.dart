@@ -7,7 +7,7 @@ import 'package:test_/utils/router/router.dart';
 import 'package:test_/utils/theme/main_theme.dart';
 
 void main() async {
-  init();
+ await init();
   runApp(
     MultiBlocProvider(
       providers: [

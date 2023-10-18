@@ -8,4 +8,7 @@ List<CityLocation> cities = [
       latitude: 41.345570, longitude: 69.284599, city: "Tashkent"),
   const CityLocation(
       latitude: 59.949009, longitude: 30.393860, city: "Petersburg"),
+  const CityLocation(latitude: 51.509865, longitude: -0.118092, city: "London"),
+  const CityLocation(
+      latitude: 40.753742, longitude: -73.983559, city: "New York"),
 ];

@@ -20,6 +20,13 @@ class MainRepository {
       return "Shouldn't be empty";
     }
   }
+   phonevalidator(String val) {
+    if (val.isEmpty) {
+      return "Shouldn't be empty";
+    }else if(val.length<11){
+      return "Phone number field required";
+    }
+  }
 
   // Future<List<Stat>> getStats(int page, int size) async {
   //   final response = await _mainApi.getStats(page, size);

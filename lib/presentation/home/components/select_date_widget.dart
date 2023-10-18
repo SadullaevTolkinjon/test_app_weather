@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_/di/injection.dart';
+import 'package:test_/domain/repository/main_repository.dart';
 import 'package:test_/presentation/home/components/text_form_field.dart';
 import 'package:test_/presentation/home/cubit/home_cubit.dart';
 import 'package:test_/presentation/widgets/buildable.dart';
@@ -69,7 +70,9 @@ class SelectDateWidget extends StatelessWidget {
             child: CustomTextFormfield(
               controller: controller,
               enable: false,
-              validator: (v) {},
+              validator: (v) {
+               
+              },
               hintText: "Date of brith",
             ),
           );

@@ -38,7 +38,6 @@ class HomeCubit extends BuildableCubit<HomeState, HomeBuildableState> {
     build((buildable) => buildable.copyWith(checkboxVal: val));
   }
 
- 
   initCalendar(DateTime time) {
     build(
       (buildable) => buildable.copyWith(
@@ -46,8 +45,10 @@ class HomeCubit extends BuildableCubit<HomeState, HomeBuildableState> {
       ),
     );
   }
-  update(){
-    build((buildable) => buildable);
-  }
 
+  check() async {
+    build((buildable) => buildable.copyWith(loading: true));
+    await Future.delayed(const Duration(seconds: 2));
+    build((buildable) => buildable.copyWith(loading: false));
+  }
 }

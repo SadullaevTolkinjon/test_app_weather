@@ -15,6 +15,7 @@ import 'package:test_/presentation/home/components/text_form_field.dart';
 import 'package:test_/presentation/home/cubit/home_cubit.dart';
 import 'package:test_/presentation/widgets/buildable.dart';
 import 'package:test_/presentation/widgets/elevated_widget_btn.dart';
+import 'package:test_/presentation/widgets/modal_progress_hud.dart';
 import 'package:test_/presentation/widgets/my_padding.dart';
 import 'package:test_/presentation/widgets/show_snacbar.dart';
 import 'package:test_/utils/app_size/app_size_const.dart';
@@ -46,104 +47,107 @@ class _HomeViewState extends State<HomeView> {
           buildable.is_image_failed,
           buildable.is_privacy_failed,
           buildable.checkboxVal,
-          buildable.time
+          buildable.time,buildable.loading
         ],
         builder: (context, state) {
-          return SafeArea(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: AppSizes.getH(context, 0.015),
-                ),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _buildPadding(AppSizes.getH(context, 0.01)),
-                      const CustomHomeTitle(title: "Please enter full name"),
-                      _buildPadding(AppSizes.getH(context, 0.014)),
-                      CustomTextFormfield(
-                        controller: _textController,
-                        validator: (v) {
-                          return locator<MainRepository>().validator(v!);
-                        },
-                        keyboardType: TextInputType.text,
-                        hintText: "Full name",
-                      ),
-                      _buildPadding(AppSizes.getH(context, 0.014)),
-                      const CustomHomeTitle(title: "Please enter passaword"),
-                      _buildPadding(AppSizes.getH(context, 0.014)),
-                      CustomTextFormfield(
-                        controller: _passwordController,
-                        validator: (v) {
-                          return locator<MainRepository>().validator(v!);
-                        },
-                        hintText: "Password",
-                        obsecure: state.obsecure,
-                        suffix: GestureDetector(
-                          onTap: () {
-                            BlocProvider.of<HomeCubit>(context)
-                                .changeObsecure(!state.obsecure);
+          return ModalProgressHUD(
+            inAsyncCall: state.loading,
+            child: SafeArea(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: AppSizes.getH(context, 0.015),
+                  ),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildPadding(AppSizes.getH(context, 0.01)),
+                        const CustomHomeTitle(title: "Please enter full name"),
+                        _buildPadding(AppSizes.getH(context, 0.014)),
+                        CustomTextFormfield(
+                          controller: _textController,
+                          validator: (v) {
+                            return locator<MainRepository>().validator(v!);
                           },
-                          child: state.obsecure == true
-                              ? SvgPicture.asset(IconConstants.eye_off)
-                              : SvgPicture.asset(IconConstants.eye_on),
+                          keyboardType: TextInputType.text,
+                          hintText: "Full name",
                         ),
-                      ),
-                      _buildPadding(AppSizes.getH(context, 0.014)),
-                      const CustomHomeTitle(title: "Please enter phone number"),
-                      _buildPadding(AppSizes.getH(context, 0.014)),
-                      CustomTextFormfield(
-                        controller: _phoneController,
-                        validator: (v) {
-                          return locator<MainRepository>().validator(v!);
-                        },
-                        keyboardType: TextInputType.phone,
-                        hintText: "Phone number",
-                      ),
-                      _buildPadding(AppSizes.getH(context, 0.014)),
-                      const CustomHomeTitle(
-                          title: "Please select date of your brith"),
-                      _buildPadding(AppSizes.getH(context, 0.014)),
-                      SelectDateWidget(
-                        controller: _dateOfBirthController,
-                  
-                      ),
-                      _buildPadding(
-                        AppSizes.getH(context, 0.014),
-                      ),
-                      const CustomHomeTitle(title: "Please select image"),
-                      _buildPadding(AppSizes.getH(context, 0.014)),
-                      const SelectImageWidget(),
-                      _buildPadding(AppSizes.getH(context, 0.014)),
-                      const CheckUserAgreementWidget(
-                        validate: true,
-                      ),
-                      // const Spacer(),
-                      _buildPadding(AppSizes.getH(context, 0.024)),
-                      ElevatedBtnWidget(
-                        ontap: () {
-                          if (_formKey.currentState!.validate()) {
-                            if (state.checkboxVal == false) {
-                              validate(
-                                state.imagePath == null ? false : true,
-                                state.checkboxVal,
-                                state.time == null ? false : true,
-                              );
+                        _buildPadding(AppSizes.getH(context, 0.014)),
+                        const CustomHomeTitle(title: "Please enter passaword"),
+                        _buildPadding(AppSizes.getH(context, 0.014)),
+                        CustomTextFormfield(
+                          controller: _passwordController,
+                          validator: (v) {
+                            return locator<MainRepository>().validator(v!);
+                          },
+                          hintText: "Password",
+                          obsecure: state.obsecure,
+                          suffix: GestureDetector(
+                            onTap: () {
+                              BlocProvider.of<HomeCubit>(context)
+                                  .changeObsecure(!state.obsecure);
+                            },
+                            child: state.obsecure == true
+                                ? SvgPicture.asset(IconConstants.eye_off)
+                                : SvgPicture.asset(IconConstants.eye_on),
+                          ),
+                        ),
+                        _buildPadding(AppSizes.getH(context, 0.014)),
+                        const CustomHomeTitle(
+                            title: "Please enter phone number"),
+                        _buildPadding(AppSizes.getH(context, 0.014)),
+                        CustomTextFormfield(
+                          controller: _phoneController,
+                          validator: (v) {
+                            return locator<MainRepository>().phonevalidator(v!);
+                          },
+                          keyboardType: TextInputType.phone,
+                          hintText: "Phone number",
+                        ),
+                        _buildPadding(AppSizes.getH(context, 0.014)),
+                        const CustomHomeTitle(
+                            title: "Please select date of your brith"),
+                        _buildPadding(AppSizes.getH(context, 0.014)),
+                        SelectDateWidget(
+                          controller: _dateOfBirthController,
+                        ),
+                        _buildPadding(
+                          AppSizes.getH(context, 0.014),
+                        ),
+                        const CustomHomeTitle(title: "Please select image"),
+                        _buildPadding(AppSizes.getH(context, 0.014)),
+                        const SelectImageWidget(),
+                        _buildPadding(AppSizes.getH(context, 0.014)),
+                        const CheckUserAgreementWidget(
+                          validate: true,
+                        ),
+                        // const Spacer(),
+                        _buildPadding(AppSizes.getH(context, 0.024)),
+                        ElevatedBtnWidget(
+                          ontap: () {
+                            if (_formKey.currentState!.validate()) {
+                          validate(
+                                  state.imagePath == null ? false : true,
+                                  state.checkboxVal,
+                                  state.time == null ? false : true,
+                                
+                                 
+                          );
                             }
-                          }
-                        },
-                        height: AppSizes.getH(context, 0.05),
-                        width: double.infinity,
-                        color: ColorConstants.darkBlue,
-                        title: "Check",
-                      ),
-                      _buildPadding(
-                        AppSizes.getH(context, 0.01),
-                      )
-                    ],
+                          },
+                          height: AppSizes.getH(context, 0.05),
+                          width: double.infinity,
+                          color: ColorConstants.darkBlue,
+                          title: "Check",
+                        ),
+                        _buildPadding(
+                          AppSizes.getH(context, 0.01),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -158,11 +162,14 @@ class _HomeViewState extends State<HomeView> {
     if (time == false) {
       return showSnacbar(context, 'You must choose date of your birth.');
     }
-    if (imagePath == false) {
+   else if (imagePath == false) {
       return showSnacbar(context, 'You must select image.');
-    } if (checkboxVal == false) {
+    }
+   else if (checkboxVal == false) {
       return showSnacbar(context, 'You must accept the terms and conditions.');
-    } 
+    }else{
+       context.read<HomeCubit>().check();
+    }
   }
 
   _buildPadding(double size) {
