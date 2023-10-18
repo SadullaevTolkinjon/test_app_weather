@@ -118,7 +118,7 @@ class _WeatherViewState extends State<WeatherView> {
   }
 @override
   void dispose() {
-  
+  context.read<WeatherCubit>().dispose();
     super.dispose();
   }
 
