@@ -116,4 +116,10 @@ class _WeatherViewState extends State<WeatherView> {
     }
     return widgets;
   }
+@override
+  void dispose() {
+  
+    super.dispose();
+  }
+
 }

@@ -16,7 +16,7 @@ builtBottomBar() {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.favorite), label: "Favorite"),
+              icon: Icon(Icons.calculate), label: "Calculator"),
           BottomNavigationBarItem(icon: Icon(Icons.snowing), label: "Weather")
         ],
       );

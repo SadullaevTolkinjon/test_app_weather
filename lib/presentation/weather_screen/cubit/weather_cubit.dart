@@ -16,13 +16,13 @@ part 'weather_cubit.freezed.dart';
 class WeatherCubit extends BuildableCubit<WeatherState, WeatherBuuildable> {
   final MainService _service;
   WeatherCubit(this._service) : super(const WeatherBuuildable()) {
+  
    Timer.periodic(const Duration(seconds: 4),(timer){
     fetch(buildable.selectedCity ?? cities.first);
    }); 
   }
-
+ Timer? _debounce;
   fetch(CityLocation city) async {
-  
     build((buildable) => buildable.copyWith(loading: true));
     try {
       ForecastModel data =
@@ -36,7 +36,7 @@ class WeatherCubit extends BuildableCubit<WeatherState, WeatherBuuildable> {
             selectedCity: city),
       );
     } catch (e) {
-      print(e);
+     
       build(
         (buildable) => buildable.copyWith(
           loading: false,
@@ -46,5 +46,8 @@ class WeatherCubit extends BuildableCubit<WeatherState, WeatherBuuildable> {
         ),
       );
     }
+  }
+  dispose() {
+    _debounce?.cancel();
   }
 }
