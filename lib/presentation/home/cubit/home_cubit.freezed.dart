@@ -21,10 +21,10 @@ mixin _$HomeBuildableState {
   bool get success => throw _privateConstructorUsedError;
   bool get failed => throw _privateConstructorUsedError;
   dynamic get error => throw _privateConstructorUsedError;
-  bool get isSuccess => throw _privateConstructorUsedError;
-  bool get isUser => throw _privateConstructorUsedError;
+  bool get obsecure => throw _privateConstructorUsedError;
   int get currentIndex => throw _privateConstructorUsedError;
   List<dynamic> get data => throw _privateConstructorUsedError;
+  File? get imagePath => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeBuildableStateCopyWith<HomeBuildableState> get copyWith =>
@@ -43,10 +43,10 @@ abstract class $HomeBuildableStateCopyWith<$Res> {
       bool success,
       bool failed,
       dynamic error,
-      bool isSuccess,
-      bool isUser,
+      bool obsecure,
       int currentIndex,
-      List<dynamic> data});
+      List<dynamic> data,
+      File? imagePath});
 }
 
 /// @nodoc
@@ -67,10 +67,10 @@ class _$HomeBuildableStateCopyWithImpl<$Res, $Val extends HomeBuildableState>
     Object? success = null,
     Object? failed = null,
     Object? error = freezed,
-    Object? isSuccess = null,
-    Object? isUser = null,
+    Object? obsecure = null,
     Object? currentIndex = null,
     Object? data = null,
+    Object? imagePath = freezed,
   }) {
     return _then(_value.copyWith(
       loading: null == loading
@@ -93,13 +93,9 @@ class _$HomeBuildableStateCopyWithImpl<$Res, $Val extends HomeBuildableState>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      isSuccess: null == isSuccess
-          ? _value.isSuccess
-          : isSuccess // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isUser: null == isUser
-          ? _value.isUser
-          : isUser // ignore: cast_nullable_to_non_nullable
+      obsecure: null == obsecure
+          ? _value.obsecure
+          : obsecure // ignore: cast_nullable_to_non_nullable
               as bool,
       currentIndex: null == currentIndex
           ? _value.currentIndex
@@ -109,6 +105,10 @@ class _$HomeBuildableStateCopyWithImpl<$Res, $Val extends HomeBuildableState>
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
+      imagePath: freezed == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as File?,
     ) as $Val);
   }
 }
@@ -127,10 +127,10 @@ abstract class _$$HomeBuildableStateImplCopyWith<$Res>
       bool success,
       bool failed,
       dynamic error,
-      bool isSuccess,
-      bool isUser,
+      bool obsecure,
       int currentIndex,
-      List<dynamic> data});
+      List<dynamic> data,
+      File? imagePath});
 }
 
 /// @nodoc
@@ -149,10 +149,10 @@ class __$$HomeBuildableStateImplCopyWithImpl<$Res>
     Object? success = null,
     Object? failed = null,
     Object? error = freezed,
-    Object? isSuccess = null,
-    Object? isUser = null,
+    Object? obsecure = null,
     Object? currentIndex = null,
     Object? data = null,
+    Object? imagePath = freezed,
   }) {
     return _then(_$HomeBuildableStateImpl(
       loading: null == loading
@@ -175,13 +175,9 @@ class __$$HomeBuildableStateImplCopyWithImpl<$Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      isSuccess: null == isSuccess
-          ? _value.isSuccess
-          : isSuccess // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isUser: null == isUser
-          ? _value.isUser
-          : isUser // ignore: cast_nullable_to_non_nullable
+      obsecure: null == obsecure
+          ? _value.obsecure
+          : obsecure // ignore: cast_nullable_to_non_nullable
               as bool,
       currentIndex: null == currentIndex
           ? _value.currentIndex
@@ -191,6 +187,10 @@ class __$$HomeBuildableStateImplCopyWithImpl<$Res>
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
+      imagePath: freezed == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as File?,
     ));
   }
 }
@@ -204,10 +204,10 @@ class _$HomeBuildableStateImpl implements _HomeBuildableState {
       this.success = false,
       this.failed = false,
       this.error,
-      this.isSuccess = false,
-      this.isUser = false,
+      this.obsecure = true,
       this.currentIndex = 0,
-      final List<dynamic> data = const []})
+      final List<dynamic> data = const [],
+      this.imagePath})
       : _data = data;
 
   @override
@@ -226,10 +226,7 @@ class _$HomeBuildableStateImpl implements _HomeBuildableState {
   final dynamic error;
   @override
   @JsonKey()
-  final bool isSuccess;
-  @override
-  @JsonKey()
-  final bool isUser;
+  final bool obsecure;
   @override
   @JsonKey()
   final int currentIndex;
@@ -243,8 +240,11 @@ class _$HomeBuildableStateImpl implements _HomeBuildableState {
   }
 
   @override
+  final File? imagePath;
+
+  @override
   String toString() {
-    return 'HomeBuildableState(loading: $loading, isModal_hud: $isModal_hud, success: $success, failed: $failed, error: $error, isSuccess: $isSuccess, isUser: $isUser, currentIndex: $currentIndex, data: $data)';
+    return 'HomeBuildableState(loading: $loading, isModal_hud: $isModal_hud, success: $success, failed: $failed, error: $error, obsecure: $obsecure, currentIndex: $currentIndex, data: $data, imagePath: $imagePath)';
   }
 
   @override
@@ -258,12 +258,13 @@ class _$HomeBuildableStateImpl implements _HomeBuildableState {
             (identical(other.success, success) || other.success == success) &&
             (identical(other.failed, failed) || other.failed == failed) &&
             const DeepCollectionEquality().equals(other.error, error) &&
-            (identical(other.isSuccess, isSuccess) ||
-                other.isSuccess == isSuccess) &&
-            (identical(other.isUser, isUser) || other.isUser == isUser) &&
+            (identical(other.obsecure, obsecure) ||
+                other.obsecure == obsecure) &&
             (identical(other.currentIndex, currentIndex) ||
                 other.currentIndex == currentIndex) &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            const DeepCollectionEquality().equals(other._data, _data) &&
+            (identical(other.imagePath, imagePath) ||
+                other.imagePath == imagePath));
   }
 
   @override
@@ -274,10 +275,10 @@ class _$HomeBuildableStateImpl implements _HomeBuildableState {
       success,
       failed,
       const DeepCollectionEquality().hash(error),
-      isSuccess,
-      isUser,
+      obsecure,
       currentIndex,
-      const DeepCollectionEquality().hash(_data));
+      const DeepCollectionEquality().hash(_data),
+      imagePath);
 
   @JsonKey(ignore: true)
   @override
@@ -294,10 +295,10 @@ abstract class _HomeBuildableState implements HomeBuildableState {
       final bool success,
       final bool failed,
       final dynamic error,
-      final bool isSuccess,
-      final bool isUser,
+      final bool obsecure,
       final int currentIndex,
-      final List<dynamic> data}) = _$HomeBuildableStateImpl;
+      final List<dynamic> data,
+      final File? imagePath}) = _$HomeBuildableStateImpl;
 
   @override
   bool get loading;
@@ -310,13 +311,13 @@ abstract class _HomeBuildableState implements HomeBuildableState {
   @override
   dynamic get error;
   @override
-  bool get isSuccess;
-  @override
-  bool get isUser;
+  bool get obsecure;
   @override
   int get currentIndex;
   @override
   List<dynamic> get data;
+  @override
+  File? get imagePath;
   @override
   @JsonKey(ignore: true)
   _$$HomeBuildableStateImplCopyWith<_$HomeBuildableStateImpl> get copyWith =>

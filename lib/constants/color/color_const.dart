@@ -5,7 +5,7 @@ class ColorConstants {
   static Color black1 = const Color(0XFF2C2F3B);
   static Color black = const Color(0XFF000000);
   static Color white = const Color(0XFFFFFFFF);
-  static Color boxShadow1 = const Color.fromARGB(0, 0, 0,6);
+  static Color boxShadow1 = const Color.fromARGB(0, 0, 0, 6);
   static Color grey = const Color(0XFFF7F7F9);
   static Color blue = const Color(0XFF24B0ED);
   static Color green = const Color(0XFF67C926);
@@ -17,4 +17,10 @@ class ColorConstants {
   static Color grey100 = const Color(0XFF9196AD);
   static Color green2 = const Color(0XFFE8F7DF);
   static Color backgroundColor = const Color(0xffF5F5F5);
+  static Color textFormFieldBorderColor = const Color(0XFFDEDEDE);
+  static Color linearGradientBlue1 =
+      const Color.fromRGBO(123, 208, 255, 0.9844);
+  static Color linearGradientBlue2 = const Color.fromRGBO(74, 133, 255, 1);
+     static Color darkBlue = const Color(0XFF162B4C);
+
 }

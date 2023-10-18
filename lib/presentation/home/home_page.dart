@@ -15,10 +15,7 @@ class HomePage extends StatelessWidget {
         listener: (context, state) {},
         child: Buildable<HomeCubit, HomeState, HomeBuildableState>(
           properties: (buildable) => [
-            buildable.error,
-            buildable.loading,
             buildable.currentIndex,
-            buildable.success
           ],
           builder: (context, state) {
             return buildHomeUi(state.currentIndex);
